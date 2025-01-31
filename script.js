@@ -58,22 +58,24 @@ function setOperation(operator) {
             evaluate();
         }
     }
-    //if (currentOperation !== null) evaluate()
     firstOperand = display.textContent
     currentOperation = operator
-    //display.textContent = `${firstOperand}`
     shouldResetScreen = true
 }
 
+// Evaluate Function
 function evaluate() {
-    if(currentOperation===null) return
-    if(currentOperation==="/"&& display.textContent==="0") {
+    if(currentOperation===null) return;
+    secondOperand=display.textContent;
+    if(currentOperation==="/" && display.textContent==="0") {
         alert("CANT DIVIDE BY 0")
         return
     }
-    secondOperand=display.textContent;
-    display.textContent=roundResult(operate(firstOperand,secondOperand,currentOperation));
-    currentOperation=null;
+    const result = operate(firstOperand, secondOperand, currentOperation);
+    display.textContent = roundResult(result);
+    firstOperand = result; 
+    currentOperation = null;
+    shouldResetScreen = true; 
 }
 
 function roundResult(number){
@@ -120,6 +122,6 @@ function mul(num1,num2) {
 }
 
 function div(num1,num2) {
-        return num1/num2;
+    return num1/num2;
 }
 
