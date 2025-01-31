@@ -82,10 +82,6 @@ function roundResult(number){
     return Math.round(number*1000)/1000;
 }
 
-//toggle sign
-
-//percentage sign
-
 // Operator Function
 function operate(num1,num2,operator) {
     num1=Number(num1);
