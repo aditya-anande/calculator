@@ -34,6 +34,7 @@ function appendNumber(number) {
     display.textContent+=number;
 }
 
+
 function resetScreen() {
     display.textContent="";
     shouldResetScreen=false;    
@@ -47,12 +48,21 @@ function clear() {
     currentOperation=null;
 }
 
+//Set the operator
 function setOperation(operator) {
-    if(currentOperation!==null) evaluate()
-    firstOperand=display.textContent;
-    currentOperation=operator;
-    display.textContent=`${firstOperand}`;
-    shouldResetScreen=true;
+    if(currentOperation) {
+        if(shouldResetScreen) {
+            currentOperation=operator;
+            return;
+        } else {
+            evaluate();
+        }
+    }
+    //if (currentOperation !== null) evaluate()
+    firstOperand = display.textContent
+    currentOperation = operator
+    //display.textContent = `${firstOperand}`
+    shouldResetScreen = true
 }
 
 function evaluate() {
@@ -62,7 +72,7 @@ function evaluate() {
         return
     }
     secondOperand=display.textContent;
-    display.textContent=operate(firstOperand,secondOperand,currentOperation);
+    display.textContent=roundResult(operate(firstOperand,secondOperand,currentOperation));
     currentOperation=null;
 }
 
