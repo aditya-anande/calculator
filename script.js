@@ -80,15 +80,15 @@ function operate(num1,num2,operator) {
     num2=Number(num2);
     switch(operator){
         case "+":
-            return add(num1+num2);
+            return add(num1,num2);
         case "-":
-            return sub(num1-num2);
+            return sub(num1,num2);
         case "*":
-            return mul(num1*num2);
+            return mul(num1,num2);
         case "/":
             if(num2===0) return null
             else {
-            return div(num1/num2);
+            return div(num1,num2);
             }
         default:
             return null;
